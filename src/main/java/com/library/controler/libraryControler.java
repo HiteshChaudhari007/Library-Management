@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,5 +35,26 @@ public class libraryControler {
 		} else {
 			return "redirect:views/index.jsp";
 		}
+	}
+
+	@RequestMapping("/add")
+	public String add() {
+
+		return "views/add.jsp";
+	}
+
+	@RequestMapping("/adding")
+	public String addBook(@ModelAttribute Book book, Model model) {
+		List<Book> bk = service.addBook(book);
+		model.addAttribute("data", bk);
+		return "views/admin.jsp";
+
+	}
+
+	@RequestMapping("/delete")
+	public String deleteBook(@RequestParam int bookId, Model model) {
+		List<Book> bk = service.deleteBook(bookId);
+		model.addAttribute("data", bk);
+		return "views/admin.jsp";
 	}
 }

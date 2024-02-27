@@ -15,7 +15,7 @@ public class libraryServiceIml implements libraryService {
 	public libraryDao dao;
 
 	public int loginChek(String name, int pass) {
-		if (name.equals("Admin") && pass == 1234) {
+		if (name.equals("admin") && pass == 1234) {
 			return 0;
 		}
 		return 1;
@@ -24,6 +24,16 @@ public class libraryServiceIml implements libraryService {
 	public List<Book> getBooks() {
 
 		return dao.getBooks();
+	}
+
+	public List<Book> addBook(Book book) {
+
+		return dao.addBook(book);
+	}
+
+	public List<Book> deleteBook(int bookId) {
+
+		return dao.deleteBook(bookId);
 	}
 
 }

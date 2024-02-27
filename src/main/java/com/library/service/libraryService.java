@@ -10,4 +10,8 @@ public interface libraryService {
 
 	public List<Book> getBooks();
 
+	List<Book> addBook(Book book);
+
+	List<Book> deleteBook(int bookId);
+
 }

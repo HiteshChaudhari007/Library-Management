@@ -25,4 +25,24 @@ public class libraryDaoIml implements libraryDao {
 
 	}
 
+	public List<Book> addBook(Book book) {
+		Session sesssion = factory.openSession();
+		sesssion.save(book);
+		sesssion.beginTransaction().commit();
+
+		return getBooks();
+	}
+
+	public List<Book> deleteBook(int bookId) {
+
+		Session session = factory.openSession();
+		session.beginTransaction();
+		Query querry = session.createQuery("delete from Book where bookId=  :rn ");
+		querry.setParameter("rn", bookId);
+		querry.executeUpdate();
+		session.getTransaction().commit();
+
+		return getBooks();
+	}
+
 }

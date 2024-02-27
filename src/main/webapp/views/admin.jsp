@@ -8,26 +8,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<script type="text/javascript">
-function deleteStudent(){
-	alert("Delete Student Data")
-	document.myForm.action="delete";
-	document.myForm.submit();
-}
-function addStudent(){
-	document.myForm.action="add";
-	document.myForm.submit();
-}
-
-function editStudent(){
-	document.myForm.action="edit";
-	document.myForm.submit();
-}
-
-
-</script>
-
-
 </head>
 <style type="text/css">
 th,td{
@@ -42,6 +22,11 @@ padding: 15px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+  }
+  th{
+  background-color: black;
+  color: white;
+  border: none;
   }
 
 </style>
@@ -67,7 +52,7 @@ List<Book> bk =(List<Book>)request.getAttribute("data");
 </thead>
 <% for(Book book : bk){ %>
 <tr>
-<td><input type="radio" name="rollno" value="<%= book.getBookId()%>" ></td>
+<td><input type="radio" name="bookId" value="<%= book.getBookId()%>" ></td>
 <td><%=book.getBookId() %></td>
 <td><%=book.getBookName() %></td>
 <td><%=book.getBookAuthor()%></td>
@@ -79,11 +64,24 @@ List<Book> bk =(List<Book>)request.getAttribute("data");
 
 </table>
 <br><br>
-<input type="submit" onclick="addStudent()" value="ADD" >
-<input type="submit" onclick="editStudent()" value="EDIT" >
-<input type="submit" onclick="deleteStudent()" value="DELETE" >
+<input type="submit" onclick="addBook()" value="ADD" >
+<input type="submit" onclick="deleteBook()" value="DELETE" >
 </form>
 </div>
+<script type="text/javascript">
+function deleteBood(){
+	alert(" Sure To Remove Book ")
+	document.myForm.action="delete";
+	document.myForm.submit();
+}
+function addBook(){
+	document.myForm.action="add";
+	document.myForm.submit();
+}
+
+
+
+</script>
 
 </body>
 </html>
